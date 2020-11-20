@@ -13,4 +13,4 @@ To run the application you need `Docker`  and a `Xorg server` on your host machi
 ## Installation
 - `git clone https://https://higatowa/bento`
 - `cd bento && docker buld -t bento .`
-- Since we need to fotward X to our machine we need first to get it's ip, and then execute `run -e DISPLAY={OUR_IP}:0.0 -it bento --user tamago`
+- Since we need to fotward X to our machine we need first to get it's ip, and then execute `docker run -e DISPLAY={OUR_IP}:0.0 -it bento --user tamago`
