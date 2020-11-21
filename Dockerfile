@@ -18,7 +18,7 @@ ENV GOPATH=/home/tamago/.go
 RUN mkdir tools && \
     go get -v github.com/OJ/gobuster && \
     git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git tools/sqlmap && \
-    git clone https://github.com/danielmiessler/SecLists lists tools/sqlmap
+    git clone https://github.com/danielmiessler/SecLists lists tools/sqlmap && \
     git clone https://github.com/quentinhardy/odat tools/odat && \
     git clone https://github.com/SecureAuthCorp/impacket impacket && \
     cd impacket && pip3 install --user . && cd .. && rm -rf impacket
