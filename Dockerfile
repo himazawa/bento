@@ -5,7 +5,9 @@ ENV path=$path:/usr/local/bin
 RUN yum check-update; exit 0 
 RUN yum -y install nmap hping3 wget zsh tcpdump \
     tmux python3 gdb python-pip python3-pip golang \
-    openssh libaio libnsl java-11-openjdk net-tools mysql sqlite nss libX11-xcb libdrm libwayland-server libgbm
+    openssh libaio libnsl java-11-openjdk net-tools \
+    mysql sqlite nss libX11-xcb libdrm libwayland-server \
+    libgbm openvpn
 
 #create new user tamago
 RUN useradd -ms /bin/zsh tamago
@@ -18,7 +20,7 @@ ENV GOPATH=/home/tamago/.go
 RUN mkdir tools && \
     go get -v github.com/OJ/gobuster && \
     git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git tools/sqlmap && \
-    git clone --depth 1 https://github.com/danielmiessler/SecLists tools/seclist && \
+    #git clone --depth 1 https://github.com/danielmiessler/SecLists tools/seclist && \
     git clone https://github.com/quentinhardy/odat tools/odat && \
     git clone https://github.com/SecureAuthCorp/impacket impacket && \
     cd impacket && pip3 install --user . && cd .. && rm -rf impacket
