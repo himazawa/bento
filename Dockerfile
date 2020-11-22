@@ -18,9 +18,9 @@ ENV GOPATH=/home/tamago/.go
 RUN mkdir tools && \
     go get -v github.com/OJ/gobuster && \
     git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git tools/sqlmap && \
-    git clone --depth 1 https://github.com/danielmiessler/SecLists lists tools/sqlmap && \
+    git clone --depth 1 https://github.com/danielmiessler/SecLists tools/seclist && \
     git clone https://github.com/quentinhardy/odat tools/odat && \
-        git clone https://github.com/SecureAuthCorp/impacket impacket && \
+    git clone https://github.com/SecureAuthCorp/impacket impacket && \
     cd impacket && pip3 install --user . && cd .. && rm -rf impacket
 # download sqlplus and depencencies
 RUN wget https://download.oracle.com/otn_software/linux/instantclient/199000/oracle-instantclient19.9-basic-19.9.0.0.0-1.x86_64.rpm -O instantclient.rpm && \
