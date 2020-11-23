@@ -11,7 +11,7 @@ It has the portability of Docker with the addition of X, so you can also run GUI
 To run bento you need `Docker`  and a `Xorg server` on your host machine.
 
 ## Installation
-- `git clone https://higatowa/bento`
+- `git clone https://github.com/higatowa/bento`
 - `cd bento && docker build -t bento .`
 - Since we need to fotward X to our machine we need first to get it's ip, and then execute `docker run --user tamago -p 8080:8080 -e DISPLAY={HOST_IP}:0.0 -it bento`
 
