@@ -7,7 +7,7 @@ RUN yum -y install nmap hping3 wget zsh tcpdump \
     tmux python3 gdb python-pip python3-pip golang \
     openssh libaio libnsl java-11-openjdk net-tools \
     mysql sqlite nss libX11-xcb libdrm libwayland-server \
-    libgbm openvpn
+    libgbm openvpn iputils bind-utils whois
 
 #create new user tamago
 RUN useradd -ms /bin/zsh tamago
@@ -24,6 +24,7 @@ RUN mkdir tools && \
     git clone https://github.com/quentinhardy/odat tools/odat && \
     git clone https://github.com/SecureAuthCorp/impacket impacket && \
     cd impacket && pip3 install --user . && cd .. && rm -rf impacket
+
 # download sqlplus and depencencies
 RUN wget https://download.oracle.com/otn_software/linux/instantclient/199000/oracle-instantclient19.9-basic-19.9.0.0.0-1.x86_64.rpm -O instantclient.rpm && \
     wget https://download.oracle.com/otn_software/linux/instantclient/199000/oracle-instantclient19.9-sqlplus-19.9.0.0.0-1.x86_64.rpm -O sqlplus.rpm
