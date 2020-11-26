@@ -7,7 +7,7 @@ RUN yum -y install nmap hping3 wget zsh tcpdump \
     openssh libaio libnsl java-11-openjdk net-tools \
     mysql sqlite nss libX11-xcb libdrm libwayland-server \
     libgbm openvpn iputils bind-utils whois sudo openssh-server \
-    passwd cracklib-dicts
+    passwd cracklib-dicts java-latest-openjdk-devel 
 
 #create new user tamago
 RUN useradd -G wheel -ms /bin/zsh tamago
@@ -24,7 +24,7 @@ RUN mkdir tools && \
     git clone https://github.com/SecureAuthCorp/impacket impacket && \
     cd impacket && pip3 install --user . && cd .. && rm -rf impacket && \
     wget https://github.com/Konloch/bytecode-viewer/releases/download/v2.9.21/Bytecode-Viewer-2.9.21.jar -O tools/bytecode_viewer.jar && \
-    wget https://ghidra-sre.org/ghidra_9.2_PUBLIC_20201113.zip -O tools/ghidra.zip && cd tools &&  unzip ghidra.zip && rm -rf gidra.zip
+    wget https://ghidra-sre.org/ghidra_9.2_PUBLIC_20201113.zip -O tools/ghidra.zip && cd tools &&  unzip ghidra.zip && rm -rf ghidra.zip
 
 #configure SSH server
 USER root
