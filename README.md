@@ -29,6 +29,11 @@ We tested this config with `vcxsrv` and `cygwin`.
 - Connect via ssh to the docker machine and forward port 6000 (Xorg) with `ssh -R 6000:localhost:6000 -L 8080:localhost:8080  tamago@bentoip`
 - On first login you will be asked to change the password.
 
+For GUI tools just run them from the terminal:
+
+![brup](https://i.imgur.com/3kDhMGP.png)
+
+![bytecode vierwer](https://imgur.com/LzktHZj.png)
 ## Current tools and utilities
 
 We don't like [bloated](https://www.kali.org/) [distros](https://www.parrotsec.org/) so we are keeping this container as minimal as possible, adding only tools useful for web and infrastructure PT and CTF but, remember, we are always open to suggestions.
