@@ -27,7 +27,7 @@ We tested this config with `vcxsrv` and `cygwin`.
 - `cd bento && docker build -t bento .`
 - generate keypair and put `authorized_keys`, contianing your public key, in `./keys`.
 - Since we need to fotward X to our machine we need first to get it's ip, and then to execute:
-`docker run --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 8080:8080 -p 22:22 -d bento`.
+`docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 22:22 -d bento`.
 - Connect via ssh to the docker machine and forward port 6000 (Xorg) with `ssh -R 6000:localhost:6000 -L 8080:localhost:8080  tamago@bentoip`.
 - On first login you will be asked to change the password.
 
