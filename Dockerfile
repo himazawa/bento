@@ -7,7 +7,7 @@ RUN yum -y install nmap hping3 wget zsh tcpdump \
     openssh libaio libnsl java-11-openjdk net-tools \
     mysql sqlite nss libX11-xcb libdrm libwayland-server \
     libgbm openvpn iputils bind-utils whois sudo openssh-server \
-    passwd
+    passwd cracklib-dicts
 
 #create new user tamago
 RUN useradd -G wheel -ms /bin/zsh tamago
@@ -34,7 +34,8 @@ RUN ssh-keygen -A && \
     chmod 644 /home/tamago/.ssh/authorized_keys && \
     sed -i 's/PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf && \
     sed -i 's/GSSAPIAuthentication.*/GSSAPIAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf && \
-    echo "export DISPLAY=localhost:0.0" >> /etc/zprofile
+    echo "export DISPLAY=localhost:0.0" >> /etc/zprofile && \
+    passwd -d tamago && passwd --expire tamago
 
 # download and install burp and sqlplus
 RUN wget 'https://portswigger.net/burp/releases/download?product=community&version=2020.11.1&type=Linux' -O burpinstall.sh && \
