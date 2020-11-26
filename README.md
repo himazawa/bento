@@ -12,7 +12,7 @@ It has the portability of Docker with the addition of X, so you can also run GUI
 ## Prerequisites
 
 To run bento you need `Docker`  and a `Xorg server` on your host machine.
-On Windows you can use [vcxsrv](https://sourceforge.net/projects/vcxsrv/), [xming](https://sourceforge.net/projects/xming/), [xgwin](https://www.cygwin.com/).
+On Windows you can use [vcxsrv](https://sourceforge.net/projects/vcxsrv/), [xming](https://sourceforge.net/projects/xming/), [cygwin](https://www.cygwin.com/).
 
 With `vcxsrv` you just need to start XLaunch, on `cygwin` you have to [install xorg](https://x.cygwin.com/docs/ug/setup.html) first.
 
