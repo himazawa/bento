@@ -17,8 +17,8 @@ With `vcxsrv` you just need to start XLaunch, on `cygwin` you have to [install x
 
 We tested this config with `vcxsrv` and `cygwin`.
 
-- `vcxsrv` : just start XLaunch and follow the setup
-- `cygwin` you have to [install xorg](https://x.cygwin.com/docs/ug/setup.html) first, then start XLaunch.
+- `vcxsrv`: just start XLaunch and follow the setup
+- `cygwin`: you have to [install xorg](https://x.cygwin.com/docs/ug/setup.html) first, then start XLaunch.
   
 ## Installation
 
@@ -35,4 +35,4 @@ We tested this config with `vcxsrv` and `cygwin`.
 We don't like [bloated](https://www.kali.org/) [distros](https://www.parrotsec.org/) so we are keeping this container as minimal as possible, adding only tools useful for web and infrastructure PT and CTF but, remember, we are always open to suggestions.
 
 Here is a list of tools and utilities:
-`burp suite`, `gobuster`, `seclist`, `odat`, `impacket`, `sqlmap`, `sqlplus`, `mysql-client`, `openvpn`, `bytecode-viewer`.
+`burp suite`, `gobuster`, `seclist`, `odat`, `impacket`, `sqlmap`, `sqlplus`, `mysql-client`, `openvpn`, `bytecode-viewer`, `ghidra`.
