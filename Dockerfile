@@ -1,5 +1,4 @@
 FROM fedora:latest
-ENV path=$path:/usr/local/bin
 
 #install dependecies,
 RUN yum check-update; exit 0 
@@ -33,9 +32,9 @@ COPY ./keys/authorized_keys /home/tamago/.ssh/authorized_keys
 RUN ssh-keygen -A && \
     chown tamago:tamago /home/tamago/.ssh/authorized_keys && \
     chmod 644 /home/tamago/.ssh/authorized_keys && \
-    echo "PasswordAuthentication no" /etc/ssh/sshd_config && \
     sed -i 's/PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf && \
-    sed -i 's/GSSAPIAuthentication.*/GSSAPIAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf
+    sed -i 's/GSSAPIAuthentication.*/GSSAPIAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf && \
+    echo "export DISPLAY=localhost:0.0" >> /etc/zprofile
 
 # download and install burp and sqlplus
 RUN wget 'https://portswigger.net/burp/releases/download?product=community&version=2020.11.1&type=Linux' -O burpinstall.sh && \
