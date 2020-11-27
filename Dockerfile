@@ -35,6 +35,7 @@ RUN ssh-keygen -A && \
     sed -i 's/PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf && \
     sed -i 's/GSSAPIAuthentication.*/GSSAPIAuthentication no/' /etc/ssh/sshd_config.d/50-redhat.conf && \
     echo "export DISPLAY=localhost:0.0" >> /etc/zprofile && \
+    echo "export PATH=$PATH:$GOPATH/bin" >> /etc/zprofile && \
     passwd -d tamago && passwd --expire tamago
 
 # download and install burp and sqlplus
