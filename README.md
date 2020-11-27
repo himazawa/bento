@@ -1,7 +1,6 @@
-
 _This software is exprimental but we accept suggestions and contributions_
-# Bento Toolkit for PT and CTF
 
+# Bento Toolkit for PT and CTF
 
 _A bento (弁当, bentō) is a single-portion take-out or home-packed meal of Japanese origin._
 
@@ -21,9 +20,9 @@ We tested this config with `vcxsrv` and `cygwin`.
   
 ## Installation
 
-- `git clone https://github.com/higatowa/bento`
-- `cd bento && docker build -t bento .`
-- generate keypair and put `authorized_keys`, containing your public key, in `./keys`.
+- `git clone https://github.com/higatowa/bento` &&  `cd ./bento`
+- generate keypair and put `authorized_keys`, containing your public key, in `./bento/keys`.
+- `docker build -t bento .`
 - Since we need to forward X to our machine we need first to get its ip, and then to execute:
 `docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 22:22 -d bento`
 - Connect via ssh to the docker machine and forward port 6000 (Xorg) with `ssh -R 6000:localhost:6000 -L 8080:localhost:8080  tamago@bentoip`
@@ -34,6 +33,7 @@ For GUI tools just run them from the terminal:
 ![brup](https://i.imgur.com/3kDhMGP.png)
 
 ![bytecode vierwer](https://imgur.com/LzktHZj.png)
+
 ## Current tools and utilities
 
 We don't like [bloated](https://www.kali.org/) [distros](https://www.parrotsec.org/) so we are keeping this container as minimal as possible, adding only tools useful for web and infrastructure PT and CTF but, remember, we are always open to suggestions.
