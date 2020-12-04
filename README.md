@@ -20,8 +20,8 @@ We tested this config with `vcxsrv` and `cygwin`.
   
 ## Installation
 
-- `git clone https://github.com/higatowa/bento` &&  `cd ./bento`
-- generate keypair and put `authorized_keys`, containing your public key, in `./bento/keys`.
+- `git clone https://github.com/higatowa/bento &&  cd ./bento`
+- generate keypair and put `authorized_keys`, containing your public key, in `./keys`.
 - `docker build -t bento .`
 - Since we need to forward X to our machine we need first to get its ip, and then to execute:
 `docker run --cap-add=NET_ADMIN --device /dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 22:22 -d bento`
