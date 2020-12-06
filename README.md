@@ -40,3 +40,8 @@ We don't like [bloated](https://www.kali.org/) [distros](https://www.parrotsec.o
 
 Here is a list of tools and utilities:
 `burp suite`, `gobuster`, `seclist`, `odat`, `impacket`, `sqlmap`, `sqlplus`, `mysql-client`, `openvpn`, `bytecode-viewer`, `ghidra`.
+
+## Known issues
+
+- Burp embededed browser is not working if run as user.
+    We addressed this in issue #3. We found the issue and while we are waiting for the Portswigger team to fix it, we wrote a small workaround, just run the `/home/tamago/burp_fix/burp_fix.sh` as `root` and it will fix it.
