@@ -18,7 +18,7 @@ We tested this config with `vcxsrv` and `cygwin`.
 - `vcxsrv`: just start XLaunch and follow the setup
 - `cygwin`: you have to [install xorg](https://x.cygwin.com/docs/ug/setup.html) first, then start XLaunch.
   
-## Installation
+## Installation with  Docker
 
 - `git clone https://github.com/higatowa/bento &&  cd ./bento`
 - generate keypair and put `authorized_keys`, containing your public key, in `./keys`.
@@ -34,14 +34,42 @@ For GUI tools just run them from the terminal:
 
 ![bytecode vierwer](https://imgur.com/LzktHZj.png)
 
-## Current tools and utilities
+## Installation with Docker Compose
 
-We don't like [bloated](https://www.kali.org/) [distros](https://www.parrotsec.org/) so we are keeping this container as minimal as possible, adding only tools useful for web and infrastructure PT and CTF but, remember, we are always open to suggestions.
+To be able to quickly deploy multiple instance of bento we decided to write a `docker-compose` this isn't only for style but we also added a collaborative pad, `codimd`. During our wourk we have the need to share informations on the target so we decided to implement in bento the solution we use dailies.
+The pad is exposed by default on port `3000`.\
 
-Here is a list of tools and utilities:
-`burp suite`, `gobuster`, `seclist`, `odat`, `impacket`, `sqlmap`, `sqlplus`, `mysql-client`, `openvpn`, `bytecode-viewer`, `ghidra`.
+![codimd](https://i.imgur.com/mbGqZeu.png)
+
+Replace the step `3` and `4` of `Installation with Docker` chapter with:
+
+`docker-compose build` and `docker-compose up`
+
+in the project directory. 
+
+If you wanto to deploy only `bento` without `codimd`:
+
+`docker-compose up bento`
 
 ## Known issues
 
 - Burp embededed browser is not working if run as user.
     We addressed this in issue #3. We found the issue and while we are waiting for the Portswigger team to fix it, we wrote a small workaround, just run the `/home/tamago/burp_fix/burp_fix.sh` as `root` and it will fix it.
+
+## Current tools and utilities
+
+We don't like [bloated](https://www.kali.org/) [distros](https://www.parrotsec.org/) so we are keeping this container as minimal as possible, adding only tools useful for web and infrastructure PT and CTF but, remember, we are always open to suggestions.
+
+Here is a list of tools and utilities:
+- [`codimd`](https://github.com/hackmdio/codimd)  
+- [`Burp Suite`](https://forum.portswigger.net)
+- [`gobuster`](https://github.com/OJ/gobuster)
+- [`SecLists`](https://github.com/danielmiessler/SecLists)
+- [`odat`](https://github.com/quentinhardy/odat)
+- [`impacket`](https://github.com/SecureAuthCorp/impacket)
+- [`sqlmap`](https://github.com/sqlmapproject/sqlmap)
+- [`sqlplus`](https://docs.oracle.com/cd/B14117_01/server.101/b12170/qstart.htm),
+- `mysql-client`
+- [`openvpn`](https://openvpn.net/)
+- [`bytecode-viewer`](https://github.com/Konloch/bytecode-viewer)
+- [`ghidra`](https://ghidra-sre.org/)
