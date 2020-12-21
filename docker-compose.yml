@@ -1,0 +1,45 @@
+version: "3.8"       
+services:
+  bento:
+    build: .
+    devices:
+    - "/dev/net/tun"
+    ports:
+      - "22:22"
+    cap_add: 
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETUID
+      - SETGID
+      - SYS_CHROOT
+      - NET_ADMIN
+    cap_drop:
+      - ALL
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+  codimdDB:
+    image: postgres
+    networks:
+      - codimd
+    environment:
+      - POSTGRES_USER=codimd
+      - POSTGRES_PASSWORD=codimdpass
+      - POSTGRES_DB=codimd
+    volumes:
+      - ./codimd-data:/var/lib/postgresql/data
+  codimd:
+    depends_on:
+      - codimdDB
+    image: hackmdio/hackmd:latest
+    networks: 
+      - codimd
+    environment:
+      - POSTGRES_USER=codimd
+      - POSTGRES_PASSWORD=codimdpass
+      - CMD_DB_URL=postgres://codimd:codimdpass@codimdDB:5432/codimd
+    ports:
+      - "3000:3000"
+volumes: 
+  codimdDB:
+networks:
+  codimd:

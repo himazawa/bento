@@ -8,7 +8,7 @@ RUN yum -y install nmap hping3 wget zsh tcpdump \
     mysql sqlite nss libX11-xcb libdrm libwayland-server \
     libgbm openvpn iputils bind-utils whois sudo openssh-server \
     passwd cracklib-dicts java-latest-openjdk-devel java-latest-openjdk
-
+ 
 #create new user tamago
 RUN useradd -G wheel -ms /bin/zsh tamago
 USER tamago 
@@ -29,6 +29,9 @@ RUN mkdir tools && \
 #configure SSH server
 USER root
 COPY ./keys/authorized_keys /home/tamago/.ssh/authorized_keys
+COPY burp_fix/chrome_fix.py /home/tamago/burp_fix/chrome_fix.py
+COPY burp_fix/burp_fix.sh /home/tamago/burp_fix/burp_fix.sh
+
 RUN ssh-keygen -A && \
     chown tamago:tamago /home/tamago/.ssh/authorized_keys && \
     chmod 644 /home/tamago/.ssh/authorized_keys && \
@@ -48,6 +51,6 @@ RUN wget 'https://portswigger.net/burp/releases/download?product=community&type=
     rm instantclient.rpm sqlplus.rpm && \
     bash burpinstall.sh -q && \
     rm burpinstall.sh && \
-    mv  /usr/local/bin/BurpSuiteCommunity /usr/local/bin/burp 
+    mv  /usr/local/bin/BurpSuiteCommunity /usr/local/bin/burp
 
 ENTRYPOINT [ "/usr/sbin/sshd", "-D" ]
