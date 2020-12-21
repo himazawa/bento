@@ -36,8 +36,13 @@ For GUI tools just run them from the terminal:
 
 ## Installation with Docker Compose
 
-To be able to quickly deploy multiple instance of bento we decided to write a `docker-compose` this isn't only for style but we also added a collaborative pad, `codimd`. During our wourk we have the need to share informations on the target so we decided to implement in bento the solution we use dailies.
-The pad is exposed by default on port `3000`.\
+To be able to quickly deploy multiple instances of bento we decided to write a `docker-compose` file. 
+
+This isn't only for style but we also added a collaborative pad, `codimd`. 
+
+During our work we have the need to share informations on the target so we decided to implement in bento the solution we use daily.
+
+The pad is exposed by default on port `3000`.
 
 ![codimd](https://i.imgur.com/mbGqZeu.png)
 
